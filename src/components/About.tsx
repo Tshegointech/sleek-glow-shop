@@ -33,26 +33,25 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>
-            <Badge className="mb-4 bg-accent text-accent-foreground">ABOUT DERMALUX</Badge>
+            <Badge className="mb-4 bg-accent text-accent-foreground">ABOUT ESIHLE SKIN HAIR</Badge>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Where <span className="text-accent">Science</span> Meets Beauty
+              Where <span className="text-accent">Nature</span> Meets Beauty
             </h2>
             <div className="space-y-6 text-lg text-muted-foreground">
               <p>
-                Founded by a team of dermatologists and skincare researchers, DermaLux represents 
-                the pinnacle of medical-grade skincare. Our mission is to bridge the gap between 
-                clinical dermatology and everyday beauty routines.
+                Founded with a passion for natural beauty and skin health, Esihle Skin Hair represents 
+                the perfect blend of premium skincare and haircare solutions. Our mission is to provide 
+                effective, gentle products that enhance your natural beauty.
               </p>
               <p>
-                Every product in our collection is meticulously formulated using the latest 
-                scientific research and the highest quality ingredients. We believe that healthy 
-                skin is the foundation of confidence, and our products are designed to deliver 
-                visible, lasting results.
+                Every product in our collection is carefully formulated using high-quality ingredients 
+                and proven formulations. We believe that healthy skin and beautiful hair are the 
+                foundation of confidence, and our products are designed to deliver visible, lasting results.
               </p>
               <p>
-                From our state-of-the-art laboratories to your daily routine, we maintain the 
-                strictest quality standards to ensure that every product meets medical-grade 
-                specifications for safety and efficacy.
+                From sourcing the finest ingredients to maintaining strict quality standards, we ensure 
+                that every product meets our high specifications for safety, efficacy, and customer 
+                satisfaction.
               </p>
             </div>
           </div>

@@ -4,6 +4,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Heart, Star, ShoppingCart } from 'lucide-react';
 import { Product } from '@/types/product';
+import { useCart } from '@/hooks/useCart';
+import { useToast } from '@/hooks/use-toast';
 
 interface ProductCardProps {
   product: Product;
@@ -11,6 +13,16 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onWhatsAppInquiry }) => {
+  const { addItem } = useCart();
+  const { toast } = useToast();
+
+  const handleAddToCart = () => {
+    addItem(product);
+    toast({
+      title: "Added to Cart",
+      description: `${product.name} has been added to your cart.`,
+    });
+  };
   return (
     <Card className="group relative overflow-hidden hover:shadow-lg smooth-transition">
       <div className="relative">
@@ -90,11 +102,19 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onWhatsAppInquiry })
           <Button 
             variant="hero" 
             className="w-full"
-            onClick={() => onWhatsAppInquiry(product)}
+            onClick={handleAddToCart}
             disabled={!product.inStock}
           >
             <ShoppingCart className="mr-2 h-4 w-4" />
-            {product.inStock ? 'Buy via WhatsApp' : 'Out of Stock'}
+            {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+          </Button>
+          <Button 
+            variant="outline" 
+            className="w-full"
+            onClick={() => onWhatsAppInquiry(product)}
+            disabled={!product.inStock}
+          >
+            Buy Now via WhatsApp
           </Button>
         </div>
       </CardContent>

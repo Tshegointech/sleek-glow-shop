@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ShoppingCart, User } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import { Badge } from '@/components/ui/badge';
+import { Menu, X, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/hooks/useCart';
+import Cart from './Cart';
+import logoImage from '/lovable-uploads/e83c3fb9-10bb-4e9e-8c06-4a927fcdde5b.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { getTotalItems } = useCart();
 
   const navigation = [
     { name: 'Home', href: '#home' },
@@ -18,12 +23,13 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex-shrink-0">
+          <div className="flex items-center space-x-3">
             <img 
-              className="h-8 w-auto" 
-              src={logo} 
-              alt="DermaLux" 
+              className="h-10 w-10 object-contain" 
+              src={logoImage} 
+              alt="Esihle Skin Hair" 
             />
+            <span className="text-2xl font-bold">Esihle Skin Hair</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -37,20 +43,25 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-          </nav>
-
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
-            </Button>
-            <Button variant="ghost" size="icon">
+            
+            {/* Cart Button */}
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="relative"
+              onClick={() => setIsCartOpen(true)}
+            >
               <ShoppingCart className="h-5 w-5" />
+              {getTotalItems() > 0 && (
+                <Badge 
+                  variant="destructive" 
+                  className="absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-xs"
+                >
+                  {getTotalItems()}
+                </Badge>
+              )}
             </Button>
-            <Button variant="hero" size="sm">
-              Shop Now
-            </Button>
-          </div>
+          </nav>
 
           {/* Mobile menu button */}
           <div className="md:hidden">
@@ -83,20 +94,33 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex items-center space-x-2 px-3 py-2">
-                <Button variant="ghost" size="icon">
-                  <User className="h-5 w-5" />
-                </Button>
-                <Button variant="ghost" size="icon">
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  className="relative"
+                  onClick={() => {
+                    setIsCartOpen(true);
+                    setIsMenuOpen(false);
+                  }}
+                >
                   <ShoppingCart className="h-5 w-5" />
-                </Button>
-                <Button variant="hero" size="sm" className="ml-auto">
-                  Shop Now
+                  {getTotalItems() > 0 && (
+                    <Badge 
+                      variant="destructive" 
+                      className="absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-xs"
+                    >
+                      {getTotalItems()}
+                    </Badge>
+                  )}
                 </Button>
               </div>
             </div>
           </div>
         )}
       </div>
+      
+      {/* Cart Modal */}
+      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </header>
   );
 };

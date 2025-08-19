@@ -36,17 +36,15 @@ const Hero = () => {
 
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6">
-            <span className="text-foreground">GUIDING YOU TO</span>
+            <span className="text-foreground">Esihle Skin Hair</span>
             <br />
-            <span className="text-foreground">HEALTHY SKIN</span>
-            <br />
-            <span className="text-accent">THROUGH MEDICAL SCIENCE</span>
+            <span className="text-accent">Premium Care</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl sm:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-            Experience premium dermatological solutions designed by medical professionals 
-            for exceptional skin health and confidence.
+            Transform your skin and hair with our scientifically-formulated products 
+            designed for exceptional results and natural beauty.
           </p>
 
           {/* CTA Buttons */}

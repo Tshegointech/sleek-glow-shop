@@ -9,9 +9,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <img src={logo} alt="DermaLux" className="h-8 brightness-0 invert" />
+            <h3 className="text-2xl font-bold">Esihle Skin Hair</h3>
             <p className="text-primary-foreground/80">
-              Medical-grade skincare solutions designed by dermatologists for healthy, confident skin.
+              Premium skincare and haircare products designed for exceptional results and natural beauty.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground smooth-transition">
@@ -70,7 +70,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary-foreground/60" />
-                <span className="text-primary-foreground/80">info@dermalux.com</span>
+                <span className="text-primary-foreground/80">info@esihleskinhair.com</span>
               </div>
             </div>
           </div>
@@ -80,7 +80,7 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-primary-foreground/60 text-sm">
-              © 2024 DermaLux. All rights reserved.
+              © 2024 Esihle Skin Hair. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground smooth-transition">
