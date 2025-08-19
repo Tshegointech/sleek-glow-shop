@@ -7,11 +7,10 @@ import { Product } from '@/types/product';
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart: (product: Product) => void;
   onWhatsAppInquiry: (product: Product) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onWhatsAppInquiry }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onWhatsAppInquiry }) => {
   return (
     <Card className="group relative overflow-hidden hover:shadow-lg smooth-transition">
       <div className="relative">
@@ -91,18 +90,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, onWhats
           <Button 
             variant="hero" 
             className="w-full"
-            onClick={() => onAddToCart(product)}
+            onClick={() => onWhatsAppInquiry(product)}
             disabled={!product.inStock}
           >
             <ShoppingCart className="mr-2 h-4 w-4" />
-            {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-          </Button>
-          <Button 
-            variant="outline" 
-            className="w-full"
-            onClick={() => onWhatsAppInquiry(product)}
-          >
-            Inquire via WhatsApp
+            {product.inStock ? 'Buy via WhatsApp' : 'Out of Stock'}
           </Button>
         </div>
       </CardContent>

@@ -16,12 +16,6 @@ const Products = () => {
     ? products 
     : products.filter(product => product.category === selectedCategory);
 
-  const handleAddToCart = (product: Product) => {
-    toast({
-      title: "Added to Cart",
-      description: `${product.name} has been added to your cart.`,
-    });
-  };
 
   const handleWhatsAppInquiry = (product: Product) => {
     const message = `Hi! I'm interested in purchasing the ${product.name} (${product.size}) for $${product.price}. Could you please provide more information?`;
@@ -73,7 +67,6 @@ const Products = () => {
               <ProductCard
                 key={product.id}
                 product={product}
-                onAddToCart={handleAddToCart}
                 onWhatsAppInquiry={handleWhatsAppInquiry}
               />
             ))}
@@ -90,7 +83,6 @@ const Products = () => {
               <ProductCard
                 key={product.id}
                 product={product}
-                onAddToCart={handleAddToCart}
                 onWhatsAppInquiry={handleWhatsAppInquiry}
               />
             ))}

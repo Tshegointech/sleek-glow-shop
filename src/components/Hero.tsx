@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, X } from 'lucide-react';
 import heroImage from '@/assets/hero-products.jpg';
 
 const Hero = () => {
+  const [showVideo, setShowVideo] = useState(false);
+
+  const handleWatchStory = () => {
+    setShowVideo(true);
+  };
+
+  const closeVideo = () => {
+    setShowVideo(false);
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background */}
@@ -45,7 +55,7 @@ const Hero = () => {
               Shop Now
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 smooth-transition" />
             </Button>
-            <Button variant="outline" size="xl" className="group">
+            <Button variant="outline" size="xl" className="group" onClick={handleWatchStory}>
               <Play className="mr-2 h-5 w-5" />
               Watch Our Story
             </Button>
@@ -68,6 +78,34 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Video Modal */}
+      {showVideo && (
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4">
+          <div className="relative w-full max-w-4xl aspect-video">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute -top-12 right-0 text-white hover:bg-white/20"
+              onClick={closeVideo}
+            >
+              <X className="h-6 w-6" />
+            </Button>
+            <video
+              className="w-full h-full rounded-lg"
+              controls
+              autoPlay
+              poster={heroImage}
+            >
+              <source
+                src="https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4"
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      )}
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
